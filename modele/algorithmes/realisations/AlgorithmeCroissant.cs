@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,13 +16,18 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
             foreach (Lieu lieu in listeLieux)
             {
                 this.Tournee.Add(lieu);
+                sw.Stop();
                 this.NotifyPropertyChanged("Tournee");
+                sw.Start();
             }
-            MessageBox.Show("Latence : " + TempsExecution + " ms", "Latence de traitement", MessageBoxButton.OK, MessageBoxImage.Information);
+            sw.Stop();
+            this.TempsExecution = sw.ElapsedMilliseconds;
         }
     }
 }
