@@ -26,7 +26,7 @@ namespace VoyageurDeCommerce.modele.parseur
             this.listeLieux = new Dictionary<string, Lieu>();
             this.listeRoutes = new List<Route>();
 
-            this.adresseFichier = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\ressources\" +nomDuFichier;
+            this.adresseFichier = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\ressources\" + nomDuFichier;
 
         }
 

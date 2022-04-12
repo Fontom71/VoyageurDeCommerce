@@ -121,7 +121,6 @@ D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\bin\Debug\VoyageurDeCommerce.exe.config
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\bin\Debug\VoyageurDeCommerce.exe
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\bin\Debug\VoyageurDeCommerce.pdb
-D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.csproj.AssemblyReference.cache
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\vue\composants\PanelTournee.g.cs
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\vue\FenetrePrincipale.g.cs
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\App.g.cs
