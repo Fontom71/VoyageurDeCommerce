@@ -5,6 +5,7 @@
     {
         ALGOEXEMPLE,
         CROISSANT,
-        INSERTIONPROCHE
+        INSERTIONPROCHE,
+        VOISINPROCHE,
     }
 }
