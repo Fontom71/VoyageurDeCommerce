@@ -1,19 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
 using VoyageurDeCommerce.modele.distances;
 using VoyageurDeCommerce.modele.lieux;
 
 namespace VoyageurDeCommerce.modele.algorithmes.realisations
 {
-    class AlgorithmeInsertion : Algorithme
+    class AlgoInsertionLoin : Algorithme
     {
-        public override string Nom => "Insertion";
+        public override string Nom => "Insertion loin";
 
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
 
             List<Lieu> nonVisiter = listeLieux;
@@ -61,9 +60,9 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                     {
                         if (j != i)
                         {
-                            r += FloydWarshall.Distance(lieuNV, visiter[i]);
-                            r += FloydWarshall.Distance(lieuNV, visiter[j]);
-                            r -= FloydWarshall.Distance(visiter[i], visiter[j]);
+                            r -= FloydWarshall.Distance(lieuNV, visiter[i]);
+                            r -= FloydWarshall.Distance(lieuNV, visiter[j]);
+                            r += FloydWarshall.Distance(visiter[i], visiter[j]);
                             if (r < valeurMIN)
                             {
                                 valeurMIN = r;
@@ -77,13 +76,19 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                         if (lieu1 == lieu)
                         {
                             this.Tournee.Add(lieuNV);
+                            sw.Stop();
                             this.NotifyPropertyChanged("Tournee");
+                            sw.Start();
                         }
                         this.Tournee.Add(lieu);
+                        sw.Stop();
                         this.NotifyPropertyChanged("Tournee");
+                        sw.Start();
                     }
                 }
             }
+            sw.Stop();
+            this.TempsExecution = sw.ElapsedMilliseconds;
         }
     }
 }

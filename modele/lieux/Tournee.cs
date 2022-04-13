@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using VoyageurDeCommerce.modele.distances;
-using VoyageurDeCommerce.vuemodele;
 
 namespace VoyageurDeCommerce.modele.lieux
 {
@@ -42,9 +41,9 @@ namespace VoyageurDeCommerce.modele.lieux
             get
             {
                 int result = 0;
-                for(int i = 0; i < listeLieux.Count-1; i++)
+                for (int i = 0; i < listeLieux.Count - 1; i++)
                 {
-                    result += FloydWarshall.Distance(listeLieux[i], listeLieux[(i+1) % listeLieux.Count]);
+                    result += FloydWarshall.Distance(listeLieux[i], listeLieux[(i + 1) % listeLieux.Count]);
                 }
                 return result;
             }
@@ -53,7 +52,7 @@ namespace VoyageurDeCommerce.modele.lieux
         public override string ToString()
         {
             string result = "";
-            foreach(Lieu lieu in listeLieux)
+            foreach (Lieu lieu in listeLieux)
             {
                 result += $"{lieu.Nom} => ";
             }

@@ -13,13 +13,13 @@ namespace VoyageurDeCommerce.modele.parseur
         /// <param name="morceaux">Les 4 morceaux de la ligne correspondant à la ligne</param>
         /// <param name="listLieux">Liste des lieux indexés par leur nom</param>
         /// <returns>La route créé</returns>
-        public static Route Creer(String[] morceaux,Dictionary<String,Lieu> listLieux)
+        public static Route Creer(String[] morceaux, Dictionary<String, Lieu> listLieux)
         {
-            if(morceaux == null || morceaux.Length < 4)
+            if (morceaux == null || morceaux.Length < 4)
             {
                 throw new InvalidOperationException();
             }
-            if(morceaux[0] != "ROUTE")
+            if (morceaux[0] != "ROUTE")
             {
                 throw new InvalidOperationException();
             }

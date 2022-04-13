@@ -2,10 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using VoyageurDeCommerce.modele.lieux;
 using VoyageurDeCommerce.modele.parseur;
 
@@ -20,7 +17,7 @@ namespace VoyageurDeCommerce.vuemodele
         private ObservableCollection<String> listeFichiers;
         public ObservableCollection<String> ListeFichiers => listeFichiers;
         ///<summary>Liste des lieux du graphe en cours</summary>
-        private Dictionary<String,Lieu> listeLieux;
+        private Dictionary<String, Lieu> listeLieux;
         public Dictionary<String, Lieu> ListeLieux => listeLieux;
         ///<summary>Liste des routes du graphe en cours</summary>
         private List<Route> listeRoutes;
@@ -32,11 +29,12 @@ namespace VoyageurDeCommerce.vuemodele
         private bool doitCharger;
 
         /// <summary>Fichier sélectionné pour le graphe </summary>
-        public String FichierSelectionne {
+        public String FichierSelectionne
+        {
             get => fichierSelectionne;
             set
             {
-                if(fichierSelectionne != null) fichierSelectionneMem = fichierSelectionne;
+                if (fichierSelectionne != null) fichierSelectionneMem = fichierSelectionne;
                 fichierSelectionne = value;
                 this.ChargementFichier();
                 this.NotifyPropertyChanged();
@@ -58,7 +56,7 @@ namespace VoyageurDeCommerce.vuemodele
 
             //Creation d'un watcher 
             String chemin = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + @"\ressources\";
-            FileSystemWatcher watcher = new FileSystemWatcher(chemin,"*.gph");
+            FileSystemWatcher watcher = new FileSystemWatcher(chemin, "*.gph");
             watcher.Created += Watcher_Created;
             watcher.Deleted += Watcher_Deleted;
             watcher.Renamed += Watcher_Renamed;
@@ -127,7 +125,7 @@ namespace VoyageurDeCommerce.vuemodele
 
             //Mise à jour de la liste
             this.listeFichiers.Clear();
-            foreach(String fichier in fichiers)
+            foreach (String fichier in fichiers)
             {
                 String nomFichier = Path.GetFileName(fichier);
                 this.listeFichiers.Add(nomFichier);
@@ -137,7 +135,7 @@ namespace VoyageurDeCommerce.vuemodele
         /// <summary>Chargement du fichier</summary>
         private void ChargementFichier()
         {
-            if(this.doitCharger)
+            if (this.doitCharger)
             {
                 this.ListeLieux.Clear();
                 this.ListeRoutes.Clear();

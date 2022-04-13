@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using VoyageurDeCommerce.modele.lieux;
 
 namespace VoyageurDeCommerce.modele.distances
@@ -13,7 +9,8 @@ namespace VoyageurDeCommerce.modele.distances
         private static FloydWarshall instance;
         public static FloydWarshall Instance
         {
-            get {
+            get
+            {
                 if (instance == null) instance = new FloydWarshall();
                 return instance;
             }
@@ -87,7 +84,7 @@ namespace VoyageurDeCommerce.modele.distances
                 foreach (Lieu lieuI in listeDesLieux)
                     foreach (Lieu lieuJ in listeDesLieux)
                     {
-                        if(Instance.tableauDistances[lieuI][lieuJ]> Instance.tableauDistances[lieuI][lieuK] + Instance.tableauDistances[lieuK][lieuJ])
+                        if (Instance.tableauDistances[lieuI][lieuJ] > Instance.tableauDistances[lieuI][lieuK] + Instance.tableauDistances[lieuK][lieuJ])
                         {
                             Instance.tableauDistances[lieuI][lieuJ] = Instance.tableauDistances[lieuI][lieuK] + Instance.tableauDistances[lieuK][lieuJ];
                             Instance.tableauPredecesseurs[lieuI][lieuJ] = Instance.tableauPredecesseurs[lieuK][lieuJ];
@@ -115,7 +112,7 @@ namespace VoyageurDeCommerce.modele.distances
         {
             List<Route> chemin = new List<Route>();
             Lieu courant = arrivee;
-            while(Instance.tableauPredecesseurs[depart][courant] != null)
+            while (Instance.tableauPredecesseurs[depart][courant] != null)
             {
                 Lieu predecesseur = Instance.tableauPredecesseurs[depart][courant];
                 chemin.Add(Instance.tableauRoutes[predecesseur][courant]);

@@ -14,13 +14,13 @@ namespace VoyageurDeCommerce.modele.parseur
         public static Lieu Creer(String[] morceaux)
         {
             TypeLieu type;
-            switch(morceaux[0])
+            switch (morceaux[0])
             {
                 case "MAGASIN": type = TypeLieu.MAGASIN; break;
                 case "USINE": type = TypeLieu.USINE; break;
                 default: throw new InvalidOperationException();
             }
-            Lieu l = new Lieu(type,morceaux[1], Int32.Parse(morceaux[2]), Int32.Parse(morceaux[3]));
+            Lieu l = new Lieu(type, morceaux[1], Int32.Parse(morceaux[2]), Int32.Parse(morceaux[3]));
             return l;
         }
     }

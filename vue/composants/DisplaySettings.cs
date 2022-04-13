@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace VoyageurDeCommerce.vue.composants
+﻿namespace VoyageurDeCommerce.vue.composants
 {
     /// <summary>Settings d'affichage des graphes </summary>
     public class DisplaySettings

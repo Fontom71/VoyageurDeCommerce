@@ -17,7 +17,7 @@
         /// <param name="depart">Lieu de départ</param>
         /// <param name="arrivee">Lieu d'arrivée</param>
         /// <param name="distance">Distance entre les deux lieux</param>
-        public Route(Lieu depart,Lieu arrivee,int distance)
+        public Route(Lieu depart, Lieu arrivee, int distance)
         {
             this.depart = depart;
             this.arrivee = arrivee;

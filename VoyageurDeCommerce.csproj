@@ -73,9 +73,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="modele\algorithmes\realisations\AlgoInsertionProche.cs" />
+    <Compile Include="modele\algorithmes\realisations\AlgoInsertionLoin.cs" />
+    <Compile Include="modele\algorithmes\realisations\AlgoRechercheLocale.cs" />
+    <Compile Include="modele\algorithmes\realisations\AlgoVoisinProche.cs" />
     <Compile Include="modele\algorithmes\realisations\AlgorithmeCroissant.cs" />
-    <Compile Include="modele\algorithmes\realisations\AlgorithmeInsertion.cs" />
+    <Compile Include="modele\algorithmes\realisations\AlgoInsertionProche.cs" />
     <Compile Include="modele\distances\FloydWarshall.cs" />
     <Compile Include="vuemodele\VueModeleHistorique.cs" />
     <Compile Include="vue\composants\AnimationColoration.cs" />

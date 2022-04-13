@@ -7,7 +7,6 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using VoyageurDeCommerce.exception;
 using VoyageurDeCommerce.exception.realisations;
-using VoyageurDeCommerce.modele.distances;
 using VoyageurDeCommerce.modele.lieux;
 using VoyageurDeCommerce.vue.composants;
 using VoyageurDeCommerce.vue.ressources;

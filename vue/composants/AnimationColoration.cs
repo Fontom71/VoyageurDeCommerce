@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Threading;
 using VoyageurDeCommerce.modele.distances;
 using VoyageurDeCommerce.modele.lieux;
@@ -45,7 +42,7 @@ namespace VoyageurDeCommerce.vue.composants
         /// <param name="e">Le tick</param>
         private void Timer_Tick(object sender, EventArgs e)
         {
-            if(position == tournee.ListeLieux.Count)
+            if (position == tournee.ListeLieux.Count)
             {
                 this.fenetre.CleanColoration();
                 this.timer.Stop();

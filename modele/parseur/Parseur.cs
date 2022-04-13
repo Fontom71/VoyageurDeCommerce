@@ -43,11 +43,12 @@ namespace VoyageurDeCommerce.modele.parseur
                 {
                     //Lecture d'une ligne
                     string[] morceaux = ligne.Split();
-                    if(morceaux[0] == "ROUTE")
+                    if (morceaux[0] == "ROUTE")
                     {
                         var mr = MonteurRoute.Creer(morceaux, ListeLieux);
                         listeRoutes.Add(mr);
-                    } else
+                    }
+                    else
                     {
                         var ml = MonteurLieu.Creer(morceaux);
                         listeLieux.Add(ml.Nom, ml);

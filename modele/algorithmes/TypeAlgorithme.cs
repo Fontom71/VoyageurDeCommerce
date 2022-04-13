@@ -6,6 +6,8 @@
         ALGOEXEMPLE,
         CROISSANT,
         INSERTIONPROCHE,
+        INSERTIONLOIN,
         VOISINPROCHE,
+        RECHERCHELOCALE
     }
 }

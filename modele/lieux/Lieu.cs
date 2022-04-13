@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace VoyageurDeCommerce.modele.lieux
+﻿namespace VoyageurDeCommerce.modele.lieux
 {
     /// <summary> Lieu (magasin ou usine) </summary>
     public class Lieu

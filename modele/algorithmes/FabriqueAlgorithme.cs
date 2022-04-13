@@ -1,7 +1,5 @@
-﻿using System.Collections.Generic;
-using VoyageurDeCommerce.exception.realisations;
+﻿using VoyageurDeCommerce.exception.realisations;
 using VoyageurDeCommerce.modele.algorithmes.realisations;
-using VoyageurDeCommerce.modele.lieux;
 
 namespace VoyageurDeCommerce.modele.algorithmes
 {
@@ -21,9 +19,11 @@ namespace VoyageurDeCommerce.modele.algorithmes
             {
                 case TypeAlgorithme.ALGOEXEMPLE: algo = new AlgoExemple(); break;
                 case TypeAlgorithme.CROISSANT: algo = new AlgorithmeCroissant(); break;
-                case TypeAlgorithme.INSERTIONPROCHE: algo = new AlgorithmeInsertion(); break;
-                case TypeAlgorithme.VOISINPROCHE: algo = new AlgoInsertionProche(); break;
-                
+                case TypeAlgorithme.INSERTIONPROCHE: algo = new AlgoInsertionProche(); break;
+                case TypeAlgorithme.VOISINPROCHE: algo = new AlgoVoisinProche(); break;
+                case TypeAlgorithme.RECHERCHELOCALE: algo = new AlgoRechercheLocale(); break;
+                case TypeAlgorithme.INSERTIONLOIN: algo = new AlgoInsertionLoin(); break;
+
                 default: throw new ExceptionAlgorithme("Vous n'avez pas modifié la fabrique des algorithmes !");
             }
 

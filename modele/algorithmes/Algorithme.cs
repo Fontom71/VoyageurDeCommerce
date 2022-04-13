@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using VoyageurDeCommerce.modele.lieux;
 using VoyageurDeCommerce.vuemodele;
 

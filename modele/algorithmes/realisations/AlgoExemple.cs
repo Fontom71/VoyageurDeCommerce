@@ -20,7 +20,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
             //Faire quelque chose ici
             Console.WriteLine(FloydWarshall.Distance(listeLieux[1], listeLieux[2]));
-            foreach(Lieu lieu in listeLieux)
+            foreach (Lieu lieu in listeLieux)
             {
                 Console.WriteLine(lieu.X);
             }
