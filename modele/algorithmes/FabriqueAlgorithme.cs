@@ -23,6 +23,7 @@ namespace VoyageurDeCommerce.modele.algorithmes
                 case TypeAlgorithme.VOISINPROCHE: algo = new AlgoVoisinProche(); break;
                 case TypeAlgorithme.RECHERCHELOCALE: algo = new AlgoRechercheLocale(); break;
                 case TypeAlgorithme.INSERTIONLOIN: algo = new AlgoInsertionLoin(); break;
+                case TypeAlgorithme.RECHERCHELOCALEV2: algo = new AlgoRechercheLocaleV2(); break;
 
                 default: throw new ExceptionAlgorithme("Vous n'avez pas modifié la fabrique des algorithmes !");
             }

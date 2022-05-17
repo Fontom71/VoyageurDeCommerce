@@ -11,23 +11,30 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
         private List<int> dist = new List<int>();
 
+
+        public Lieu TrouverUsine(List<Lieu> liste)
+        {
+            Lieu usine = null;
+            foreach (Lieu lieu in liste)
+            {
+                if (lieu.Type == TypeLieu.USINE) { usine = lieu;}
+            }
+            return usine;
+        }
+        
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
-            int valeur = 10000000;
-            Lieu usine = listeLieux[0];
 
-            Lieu lieu2 = null;
+            int valeur = int.MaxValue;
             List<Lieu> nonVisiter = new List<Lieu>(listeLieux);
-            foreach (Lieu lieu in listeLieux)
-            {
-                if (lieu.Type == TypeLieu.USINE) { usine = lieu; };
-            }
-            Lieu lieu1 = usine;
-            this.Tournee.Add(usine);
-            nonVisiter.Remove(usine);
+            Lieu voisin = null;
+            Lieu lieuActuel = TrouverUsine(listeLieux);
+            this.Tournee.Add(lieuActuel);
+            nonVisiter.Remove(lieuActuel);
+
             sw.Stop();
             this.NotifyPropertyChanged("Tournee");
             sw.Start();
@@ -36,17 +43,17 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             {
                 foreach (Lieu lieu in nonVisiter)
                 {
-                    int distance = FloydWarshall.Distance(lieu1, lieu);
+                    int distance = FloydWarshall.Distance(lieuActuel, lieu);
                     if (distance < valeur)
                     {
-                        lieu2 = lieu;
+                        voisin = lieu;
                         valeur = distance;
                     }
                 }
-                valeur = 1000000000;
-                this.Tournee.Add(lieu2);
-                lieu1 = lieu2;
-                nonVisiter.Remove(lieu1);
+                valeur = int.MaxValue;
+                this.Tournee.Add(voisin);
+                lieuActuel = voisin;
+                nonVisiter.Remove(lieuActuel);
                 sw.Stop();
                 this.NotifyPropertyChanged("Tournee");
                 sw.Start();

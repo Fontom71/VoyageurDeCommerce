@@ -1,26 +1,16 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using VoyageurDeCommerce.modele.distances;
 using VoyageurDeCommerce.modele.lieux;
 
 namespace VoyageurDeCommerce.modele.algorithmes.realisations
 {
-    class AlgoRechercheLocale : Algorithme
+    class AlgoRechercheLocaleV2 : Algorithme
     {
-        public override string Nom => "Recherche locale";
-
-        public int calculeDistance(List<Lieu> lieus)
-        {
-            int resultat = 0;
-            for (int j = 0; j < lieus.Count - 1; j++)
-            {
-                resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
-                if (j == lieus.Count - 1)
-                {
-                    resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
-                }
-            }
-            return resultat;
-        }
+        public override string Nom => "recheche local v2";
 
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
@@ -63,7 +53,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             }
 
             List<Lieu> tourneeOptimal = new List<Lieu>(listeDonner);
-            int valeurMin = calculeDistance(listeDonner);
+            int valeurMin = AlgoRechercheLocale.calculeDistance(listeDonner);
             int valeurPre = 0;
             while (valeurMin != valeurPre)
             {
@@ -102,8 +92,8 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                 this.Tournee.Add(lieu);
                 this.NotifyPropertyChanged("Tournee");
             }
-            
-           
+
+
         }
     }
 }
