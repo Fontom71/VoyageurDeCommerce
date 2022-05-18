@@ -65,7 +65,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             List<Lieu> tourneeOptimal = new List<Lieu>(listeDonner);
             int valeurMin = calculeDistance(listeDonner);
             int valeurPre = 0;
-            while (valeurMin != valeurPre)
+            while (valeurMin != valeur)
             {
                 for (int i = 1; i < listeDonner.Count; i++)
                 {

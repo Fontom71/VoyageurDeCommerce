@@ -12,6 +12,19 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
     {
         public override string Nom => "recheche local v2";
 
+        public int calculeDistance(List<Lieu> lieus)
+        {
+            int resultat = 0;
+            for (int j = 0; j < lieus.Count - 1; j++)
+            {
+                resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
+                if (j == lieus.Count - 1)
+                {
+                    resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
+                }
+            }
+            return resultat;
+        }
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
@@ -53,40 +66,41 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             }
 
             List<Lieu> tourneeOptimal = new List<Lieu>(listeDonner);
-            int valeurMin = AlgoRechercheLocale.calculeDistance(listeDonner);
+            int valeurMin = calculeDistance(listeDonner);
             int valeurPre = 0;
+
+
             while (valeurMin != valeurPre)
             {
-                for (int i = 1; i < listeDonner.Count; i++)
+                int i = 1;
+                valeurPre = valeurMin;
+                List<Lieu> liste = new List<Lieu>(listeDonner);
+                int resultatIntermediaire = 0;
+                Lieu tempo;
+                if (i == listeDonner.Count - 1)
                 {
-                    valeurPre = valeurMin;
-                    List<Lieu> liste = new List<Lieu>(listeDonner);
-                    int resultatIntermediaire = 0;
-                    Lieu tempo;
-                    if (i == listeDonner.Count - 1)
-                    {
-                        tempo = listeDonner[i];
-                        liste[i] = liste[1];
-                        liste[1] = tempo;
-                    }
-                    else
-                    {
-                        tempo = listeDonner[i];
-                        liste[i] = liste[i + 1];
-                        liste[i + 1] = tempo;
-                    }
-
-                    resultatIntermediaire = calculeDistance(tourneeOptimal);
-
-                    if (resultatIntermediaire < valeurMin)
-                    {
-                        valeurMin = resultatIntermediaire;
-                        tourneeOptimal = liste;
-                    }
-
+                    tempo = listeDonner[i];
+                    liste[i] = liste[1];
+                    liste[1] = tempo;
                 }
-                listeDonner = tourneeOptimal;
+                else
+                {
+                    tempo = listeDonner[i];
+                    liste[i] = liste[i + 1];
+                    liste[i + 1] = tempo;
+                }
+
+                resultatIntermediaire = calculeDistance(tourneeOptimal);
+
+                if (resultatIntermediaire < valeurMin)
+                {
+                    valeurMin = resultatIntermediaire;
+                    tourneeOptimal = liste;
+                }
+
             }
+            listeDonner = tourneeOptimal;
+            
             foreach (Lieu lieu in tourneeOptimal)
             {
                 this.Tournee.Add(lieu);
