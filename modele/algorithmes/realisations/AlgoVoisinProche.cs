@@ -39,7 +39,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             this.NotifyPropertyChanged("Tournee");
             sw.Start();
 
-            for (int i = 0; i < listeLieux.Count - 1; i++)
+            for (int i = 0; i < listeLieux.Count; i++)
             {
                 foreach (Lieu lieu in nonVisiter)
                 {

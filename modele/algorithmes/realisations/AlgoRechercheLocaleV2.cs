@@ -14,17 +14,14 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
         public int calculeDistance(List<Lieu> lieus)
         {
-            int resultat = 0;
-            for (int j = 0; j < lieus.Count - 1; j++)
+            int result = 0;
+            for (int i = 0; i < lieus.Count; i++)
             {
-                resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
-                if (j == lieus.Count - 1)
-                {
-                    resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
-                }
+                result += FloydWarshall.Distance(lieus[i], lieus[(i + 1) % lieus.Count]);
             }
-            return resultat;
+            return result;
         }
+
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
@@ -70,6 +67,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             int valeurPre = 0;
 
 
+
             while (valeurMin != valeurPre)
             {
                 int i = 1;
@@ -90,17 +88,15 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                     liste[i + 1] = tempo;
                 }
 
-                resultatIntermediaire = calculeDistance(tourneeOptimal);
+                resultatIntermediaire = calculeDistance(liste);
 
                 if (resultatIntermediaire < valeurMin)
                 {
                     valeurMin = resultatIntermediaire;
                     tourneeOptimal = liste;
                 }
-
+                listeDonner = tourneeOptimal;
             }
-            listeDonner = tourneeOptimal;
-            
             foreach (Lieu lieu in tourneeOptimal)
             {
                 this.Tournee.Add(lieu);

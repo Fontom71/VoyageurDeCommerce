@@ -8,18 +8,15 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
     {
         public override string Nom => "Recherche locale";
 
+        
         public int calculeDistance(List<Lieu> lieus)
         {
-            int resultat = 0;
-            for (int j = 0; j < lieus.Count - 1; j++)
+            int result = 0;
+            for (int i = 0; i < lieus.Count; i++)
             {
-                resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
-                if (j == lieus.Count - 1)
-                {
-                    resultat += FloydWarshall.Distance(lieus[j], lieus[(j + 1)]);
-                }
+                result += FloydWarshall.Distance(lieus[i], lieus[(i + 1) % lieus.Count]);
             }
-            return resultat;
+            return result;
         }
 
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
@@ -44,7 +41,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             nonVisiter.Remove(usine);
 
 
-            for (int i = 0; i < listeLieux.Count - 1; i++)
+            for (int i = 0; i < listeLieux.Count; i++)
             {
                 foreach (Lieu lieu in nonVisiter)
                 {
@@ -62,10 +59,13 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
             }
 
+
+
+
             List<Lieu> tourneeOptimal = new List<Lieu>(listeDonner);
             int valeurMin = calculeDistance(listeDonner);
             int valeurPre = 0;
-            while (valeurMin != valeur)
+            while (valeurMin != valeurPre)
             {
                 for (int i = 1; i < listeDonner.Count; i++)
                 {
@@ -86,7 +86,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                         liste[i + 1] = tempo;
                     }
 
-                    resultatIntermediaire = calculeDistance(tourneeOptimal);
+                    resultatIntermediaire = calculeDistance(liste);
 
                     if (resultatIntermediaire < valeurMin)
                     {
@@ -97,6 +97,8 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                 }
                 listeDonner = tourneeOptimal;
             }
+            
+
             foreach (Lieu lieu in tourneeOptimal)
             {
                 this.Tournee.Add(lieu);
