@@ -41,7 +41,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             nonVisiter.Remove(usine);
 
 
-            for (int i = 0; i < listeLieux.Count; i++)
+            for (int i = 0; i < listeLieux.Count-1; i++)
             {
                 foreach (Lieu lieu in nonVisiter)
                 {
@@ -65,11 +65,11 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             List<Lieu> tourneeOptimal = new List<Lieu>(listeDonner);
             int valeurMin = calculeDistance(listeDonner);
             int valeurPre = 0;
-            while (valeurMin != valeurPre)
+            while (valeurMin != valeurPre) // taend que tu trouve mieux
             {
+                valeurPre = valeurMin;
                 for (int i = 1; i < listeDonner.Count; i++)
                 {
-                    valeurPre = valeurMin;
                     List<Lieu> liste = new List<Lieu>(listeDonner);
                     int resultatIntermediaire = 0;
                     Lieu tempo;
