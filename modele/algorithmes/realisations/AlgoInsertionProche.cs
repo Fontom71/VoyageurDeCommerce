@@ -13,6 +13,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
+            List<Lieu> listeFinal=new List<Lieu>();
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
             List<Lieu> NonVisiter = new List<Lieu>(listeLieux);
             Lieu depart = null;
@@ -32,11 +33,11 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
                 }
             }
-            Tournee.Add(depart);
-            Tournee.Add(lePlusLoin);
+            listeFinal.Add(depart);
+            listeFinal.Add(lePlusLoin);
             NonVisiter.Remove(depart);
             NonVisiter.Remove(lePlusLoin);
-            NotifyPropertyChanged("Tournee");
+           
 
             while (NonVisiter.Count > 0)
             {
@@ -49,10 +50,10 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                     int distanceMax = int.MaxValue;
 
 
-                    for (int i = 0; i < Tournee.ListeLieux.Count; i++)
+                    for (int i = 0; i < listeFinal.Count; i++)
                     {
-                        Lieu avant = Tournee.ListeLieux[i];
-                        Lieu apres = Tournee.ListeLieux[(i + 1) % Tournee.ListeLieux.Count];
+                        Lieu avant = listeFinal[i];
+                        Lieu apres = listeFinal[(i + 1) % listeFinal.Count];
                         int distance = Distance(lieu, avant, apres);
                         if (index == -1 || distance < distanceMax)
                         {
@@ -70,10 +71,36 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                 }
 
 
-                Tournee.ListeLieux.Insert(indexLieuPrecedent + 1, lieuProche);
+                listeFinal.Insert(indexLieuPrecedent + 1, lieuProche);
                 NonVisiter.Remove(lieuProche);
 
-                NotifyPropertyChanged("Tournee");
+         
+            }
+            List<Lieu> tempo = new List<Lieu>();
+            bool usineTrouver = false;
+            foreach(Lieu lieu in listeFinal)
+            {
+                
+                if (lieu.Type == TypeLieu.USINE)
+                {
+                    this.Tournee.Add(lieu);
+                    usineTrouver = true;
+                    this.NotifyPropertyChanged("Tournee");
+                }
+                else if (usineTrouver == false)
+                {
+                    tempo.Add(lieu);
+                }
+                else
+                {
+                    this.Tournee.Add(lieu);
+                    this.NotifyPropertyChanged("Tournee");
+                }
+            }
+            foreach (Lieu lieu in tempo)
+            {
+                this.Tournee.Add(lieu);
+                this.NotifyPropertyChanged("Tournee");
             }
         }
     }
