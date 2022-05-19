@@ -9,86 +9,72 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
     {
         public override string Nom => "Insertion proche";
 
+        private int Distance(Lieu detour, Lieu depart, Lieu arrivee) => FloydWarshall.Distance(depart, detour) + FloydWarshall.Distance(detour, arrivee) - FloydWarshall.Distance(depart, arrivee);
+
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
-
-            List<Lieu> nonVisiter = listeLieux;
-            List<Lieu> visiter = new List<Lieu>();
-            int valeur = 0;
+            List<Lieu> NonVisiter = new List<Lieu>(listeLieux);
+            Lieu depart = null;
             Lieu lePlusLoin = null;
-            Lieu usine = null;
-            // cherche l'usine dans la liste des lieux et l'enregistre dans usine
-            foreach (Lieu lieu in listeLieux)
+            int maximum = 0;
+            foreach (Lieu lieu1 in listeLieux)
             {
-                if (lieu.Type == TypeLieu.USINE) { usine = lieu; };
-            }
-            // cherche le point le plus éloingné 
-            foreach (Lieu lieu in listeLieux)
-            {
-                int distance = FloydWarshall.Distance(usine, lieu);
-                if (distance > valeur)
+                foreach (Lieu lieu2 in listeLieux)
                 {
-                    lePlusLoin = lieu;
-                    valeur = distance;
+                    int distance = FloydWarshall.Distance(lieu1, lieu2);
+                    if (distance > maximum)
+                    {
+                        maximum = distance;
+                        depart = lieu1;
+                        lePlusLoin = lieu2;
+                    }
+
                 }
             }
-            // Donne la route vers le chemin le plus éloingner
-            foreach (Route route in FloydWarshall.Chemin(usine, lePlusLoin))
+            Tournee.Add(depart);
+            Tournee.Add(lePlusLoin);
+            NonVisiter.Remove(depart);
+            NonVisiter.Remove(lePlusLoin);
+            NotifyPropertyChanged("Tournee");
+
+            while (NonVisiter.Count > 0)
             {
-                nonVisiter.Remove(route.Depart);
-                nonVisiter.Remove(route.Arrivee);
-
-                visiter.Add(route.Depart);
-                visiter.Add(route.Arrivee);
-
-
-            }
-            // chercher des détourts les plus faible
-            foreach (Lieu lieuNV in nonVisiter)
-            {
-                int r = 0;
-                int valeurMIN = 0;
-                Lieu lieu1 = null;
-                Lieu lieu2 = null;
-
-                for (int i = 0; i < visiter.Count; i++)
+                Lieu lieuProche = null;
+                int indexLieuPrecedent = 0;
+                int distanceMinimale = int.MaxValue;
+                foreach (Lieu lieu in NonVisiter)
                 {
-                    for (int j = 0; j < visiter.Count; j++)
+                    int index = -1;
+                    int distanceMax = int.MaxValue;
+
+
+                    for (int i = 0; i < Tournee.ListeLieux.Count; i++)
                     {
-                        if (j != i)
+                        Lieu avant = Tournee.ListeLieux[i];
+                        Lieu apres = Tournee.ListeLieux[(i + 1) % Tournee.ListeLieux.Count];
+                        int distance = Distance(lieu, avant, apres);
+                        if (index == -1 || distance < distanceMax)
                         {
-                            r += FloydWarshall.Distance(lieuNV, visiter[i]);
-                            r += FloydWarshall.Distance(lieuNV, visiter[j]);
-                            r -= FloydWarshall.Distance(visiter[i], visiter[j]);
-                            if (r < valeurMIN)
-                            {
-                                valeurMIN = r;
-                                lieu1 = visiter[i];
-                                lieu2 = visiter[j];
-                            }
+                            distanceMax = distance;
+                            index = i;
                         }
                     }
-                    foreach (Lieu lieu in visiter)
+                    if (lieuProche == null || distanceMax < distanceMinimale)
                     {
-                        if (lieu1 == lieu)
-                        {
-                            this.Tournee.Add(lieuNV);
-                            sw.Stop();
-                            this.NotifyPropertyChanged("Tournee");
-                            sw.Start();
-                        }
-                        this.Tournee.Add(lieu);
-                        sw.Stop();
-                        this.NotifyPropertyChanged("Tournee");
-                        sw.Start();
+                        lieuProche = lieu;
+                        indexLieuPrecedent = index;
+                        distanceMinimale = distanceMax;
                     }
+
                 }
+
+
+                Tournee.ListeLieux.Insert(indexLieuPrecedent + 1, lieuProche);
+                NonVisiter.Remove(lieuProche);
+
+                NotifyPropertyChanged("Tournee");
             }
-            sw.Stop();
-            this.TempsExecution = sw.ElapsedMilliseconds;
         }
     }
 }

@@ -75,7 +75,8 @@
     </ApplicationDefinition>
     <Compile Include="modele\algorithmes\realisations\AlgoInsertionLoin.cs" />
     <Compile Include="modele\algorithmes\realisations\AlgoRechercheLocale.cs" />
-    <Compile Include="modele\algorithmes\realisations\AlgoVoisinProche.cs" />
+    <Compile Include="modele\algorithmes\realisations\AlgoRechercheLocaleV2.cs" />
+    <Compile Include="modele\algorithmes\realisations\AlgoPlusProcheVoisin.cs" />
     <Compile Include="modele\algorithmes\realisations\AlgorithmeCroissant.cs" />
     <Compile Include="modele\algorithmes\realisations\AlgoInsertionProche.cs" />
     <Compile Include="modele\distances\FloydWarshall.cs" />

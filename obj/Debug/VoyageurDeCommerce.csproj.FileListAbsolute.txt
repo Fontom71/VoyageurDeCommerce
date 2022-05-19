@@ -136,3 +136,23 @@ D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.exe
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.pdb
 D:\Téléchargements\IUT\PC-IUT\S2_02 - Exploration algorithmique d'un problème\VoyageurDeCommerce\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.csproj.AssemblyReference.cache
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\bin\Debug\ressources\GrapheSimple1.gph
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\bin\Debug\ressources\GrapheSimple2.gph
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\bin\Debug\VoyageurDeCommerce.exe.config
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\bin\Debug\VoyageurDeCommerce.exe
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\bin\Debug\VoyageurDeCommerce.pdb
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.csproj.AssemblyReference.cache
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\vue\composants\PanelTournee.g.cs
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\vue\FenetrePrincipale.g.cs
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\App.g.cs
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce_Content.g.cs
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce_MarkupCompile.cache
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce_MarkupCompile.lref
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\vue\composants\PanelTournee.baml
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\vue\FenetrePrincipale.baml
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.g.resources
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.Properties.Resources.resources
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.csproj.GenerateResource.cache
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.csproj.CoreCompileInputs.cache
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.exe
+C:\Users\coren\Desktop\Voyageur de commerce depo\VoyageurDeCommerce\obj\Debug\VoyageurDeCommerce.pdb

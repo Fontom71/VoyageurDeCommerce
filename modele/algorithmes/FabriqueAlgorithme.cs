@@ -20,7 +20,7 @@ namespace VoyageurDeCommerce.modele.algorithmes
                 case TypeAlgorithme.ALGOEXEMPLE: algo = new AlgoExemple(); break;
                 case TypeAlgorithme.CROISSANT: algo = new AlgorithmeCroissant(); break;
                 case TypeAlgorithme.INSERTIONPROCHE: algo = new AlgoInsertionProche(); break;
-                case TypeAlgorithme.VOISINPROCHE: algo = new AlgoVoisinProche(); break;
+                case TypeAlgorithme.VOISINPROCHE: algo = new AlgoPlusProcheVoisin(); break;
                 case TypeAlgorithme.RECHERCHELOCALE: algo = new AlgoRechercheLocale(); break;
                 case TypeAlgorithme.INSERTIONLOIN: algo = new AlgoInsertionLoin(); break;
                 case TypeAlgorithme.RECHERCHELOCALEV2: algo = new AlgoRechercheLocaleV2(); break;

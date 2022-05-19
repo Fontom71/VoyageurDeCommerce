@@ -41,7 +41,7 @@ namespace VoyageurDeCommerce.modele.lieux
             get
             {
                 int result = 0;
-                for (int i = 0; i < listeLieux.Count - 1; i++)
+                for (int i = 0; i < listeLieux.Count; i++)
                 {
                     result += FloydWarshall.Distance(listeLieux[i], listeLieux[(i + 1) % listeLieux.Count]);
                 }

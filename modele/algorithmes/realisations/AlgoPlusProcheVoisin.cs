@@ -5,7 +5,7 @@ using VoyageurDeCommerce.modele.lieux;
 
 namespace VoyageurDeCommerce.modele.algorithmes.realisations
 {
-    class AlgoVoisinProche : Algorithme
+    class AlgoPlusProcheVoisin : Algorithme
     {
         public override string Nom => "Plus proche voisin";
 
@@ -39,7 +39,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             this.NotifyPropertyChanged("Tournee");
             sw.Start();
 
-            for (int i = 0; i < listeLieux.Count; i++)
+            for (int i = 0; i < listeLieux.Count-1; i++)
             {
                 foreach (Lieu lieu in nonVisiter)
                 {
