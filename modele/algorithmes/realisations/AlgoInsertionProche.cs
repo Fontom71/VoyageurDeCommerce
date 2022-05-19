@@ -11,9 +11,10 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
 
         private int Distance(Lieu detour, Lieu depart, Lieu arrivee) => FloydWarshall.Distance(depart, detour) + FloydWarshall.Distance(detour, arrivee) - FloydWarshall.Distance(depart, arrivee);
 
+
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
-            List<Lieu> listeFinal=new List<Lieu>();
+            List<Lieu> listeFinal = new List<Lieu>();
             FloydWarshall.calculerDistances(listeLieux, listeRoute);
             List<Lieu> NonVisiter = new List<Lieu>(listeLieux);
             Lieu depart = null;
@@ -37,17 +38,17 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             listeFinal.Add(lePlusLoin);
             NonVisiter.Remove(depart);
             NonVisiter.Remove(lePlusLoin);
-           
+
 
             while (NonVisiter.Count > 0)
             {
                 Lieu lieuProche = null;
-                int indexLieuPrecedent = 0;
-                int distanceMinimale = int.MaxValue;
+                int lieuPrecedentPosition = 0;
+                int distanceMini = int.MaxValue;
                 foreach (Lieu lieu in NonVisiter)
                 {
                     int index = -1;
-                    int distanceMax = int.MaxValue;
+                    int max = int.MaxValue;
 
 
                     for (int i = 0; i < listeFinal.Count; i++)
@@ -55,32 +56,32 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                         Lieu avant = listeFinal[i];
                         Lieu apres = listeFinal[(i + 1) % listeFinal.Count];
                         int distance = Distance(lieu, avant, apres);
-                        if (index == -1 || distance < distanceMax)
+                        if (index == -1 || distance < max)
                         {
-                            distanceMax = distance;
+                            max = distance;
                             index = i;
                         }
                     }
-                    if (lieuProche == null || distanceMax < distanceMinimale)
+                    if (lieuProche == null || max < distanceMini)
                     {
                         lieuProche = lieu;
-                        indexLieuPrecedent = index;
-                        distanceMinimale = distanceMax;
+                        lieuPrecedentPosition = index;
+                        distanceMini = max;
                     }
 
                 }
 
 
-                listeFinal.Insert(indexLieuPrecedent + 1, lieuProche);
+                listeFinal.Insert(lieuPrecedentPosition + 1, lieuProche);
                 NonVisiter.Remove(lieuProche);
 
-         
+
             }
             List<Lieu> tempo = new List<Lieu>();
             bool usineTrouver = false;
-            foreach(Lieu lieu in listeFinal)
+            foreach (Lieu lieu in listeFinal)
             {
-                
+
                 if (lieu.Type == TypeLieu.USINE)
                 {
                     this.Tournee.Add(lieu);

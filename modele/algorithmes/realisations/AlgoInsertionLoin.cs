@@ -42,12 +42,12 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             while (NonVisiter.Count > 0)
             {
                 Lieu lieuProche = null;
-                int indexLieuPrecedent = 0;
-                int distanceMinimale = int.MaxValue;
+                int lieuPrecedentPosition = 0;
+                int distanceMini = int.MaxValue;
                 foreach (Lieu lieu in NonVisiter)
                 {
                     int index = -1;
-                    int distanceMax = int.MaxValue;
+                    int max = int.MaxValue;
 
 
                     for (int i = 0; i < listeFinal.Count; i++)
@@ -55,23 +55,23 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                         Lieu avant = listeFinal[i];
                         Lieu apres = listeFinal[(i + 1) % listeFinal.Count];
                         int distance = Distance(lieu, avant, apres);
-                        if (index == -1 || distance < distanceMax)
+                        if (index == -1 || distance < max)
                         {
-                            distanceMax = distance;
+                            max = distance;
                             index = i;
                         }
                     }
-                    if (lieuProche == null || distanceMax > distanceMinimale)
+                    if (lieuProche == null || max > distanceMini)
                     {
                         lieuProche = lieu;
-                        indexLieuPrecedent = index;
-                        distanceMinimale = distanceMax;
+                        lieuPrecedentPosition = index;
+                        distanceMini = max;
                     }
 
                 }
 
 
-                listeFinal.Insert(indexLieuPrecedent + 1, lieuProche);
+                listeFinal.Insert(lieuPrecedentPosition + 1, lieuProche);
                 NonVisiter.Remove(lieuProche);
 
 
