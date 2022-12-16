@@ -138,9 +138,15 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ressources\graphe_bipartie.gph" />
-    <None Include="ressources\Peigne.gph" />
-    <None Include="ressources\Tribu.gph" />
+    <Content Include="ressources\graphe_bipartie.gph">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ressources\Peigne.gph">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ressources\Tribu.gph">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Resource Include="vue\ressources\images\icon.ico" />
     <Resource Include="vue\ressources\images\truck.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

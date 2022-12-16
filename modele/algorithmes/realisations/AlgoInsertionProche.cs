@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Diagnostics;
 using VoyageurDeCommerce.modele.distances;
 using VoyageurDeCommerce.modele.lieux;
 

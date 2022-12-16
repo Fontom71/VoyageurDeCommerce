@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using VoyageurDeCommerce.modele.distances;
 using VoyageurDeCommerce.modele.lieux;
 
@@ -128,9 +124,9 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                     valeurMin = resultatIntermediaire;
                     listeDonner = liste;
                     valeurDeBoucle = 1;
-                    
+
                 }
-                
+
             }
             // Je met ma optimal trouver par mon algo dans tournee
             foreach (Lieu lieu in listeDonner)

@@ -21,15 +21,15 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             foreach (Lieu lieu in liste)
             {
                 // si le lieu est de tyoe usine alors je le retient
-                if (lieu.Type == TypeLieu.USINE) { usine = lieu;}
+                if (lieu.Type == TypeLieu.USINE) { usine = lieu; }
             }
             return usine;
         }
-         /// <summary>
-         /// algo plus proche voisin : pour chaque mouvement on recherche a savoir quel est le voisin le plus proche puis en s'y rend
-         /// </summary>
-         /// <param name="listeLieux">la liste de lieux</param>
-         /// <param name="listeRoute">route qui relie les lieux</param>
+        /// <summary>
+        /// algo plus proche voisin : pour chaque mouvement on recherche a savoir quel est le voisin le plus proche puis en s'y rend
+        /// </summary>
+        /// <param name="listeLieux">la liste de lieux</param>
+        /// <param name="listeRoute">route qui relie les lieux</param>
         public override void Executer(List<Lieu> listeLieux, List<Route> listeRoute)
         {
             Stopwatch sw = new Stopwatch();
@@ -47,7 +47,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             this.NotifyPropertyChanged("Tournee");
             sw.Start();
 
-            for (int i = 0; i < listeLieux.Count-1; i++)
+            for (int i = 0; i < listeLieux.Count - 1; i++)
             {
                 //distance minimal entre le point de départ et le voisin
                 int distanceMin = int.MaxValue;
@@ -75,7 +75,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             }
             sw.Stop();
             this.TempsExecution = sw.ElapsedMilliseconds;
-            
+
         }
     }
 }

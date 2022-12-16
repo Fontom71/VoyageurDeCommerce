@@ -56,7 +56,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             //je met l'usine dans la trouner puis je l'enleve de la liste non visiter
             listeDonner.Add(lieuActuel);
             nonVisiter.Remove(lieuActuel);
-         
+
             for (int i = 0; i < listeLieux.Count - 1; i++)
             {
                 //distance minimal entre le point de départ et le voisin
@@ -79,7 +79,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                 listeDonner.Add(voisinPlusProche);
                 lieuActuel = voisinPlusProche;
                 nonVisiter.Remove(lieuActuel);
-               
+
             }
 
 
@@ -95,7 +95,7 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
             // valeur à au debut de la boucle de valeurMin
             int valeurPre = 0;
             // tend que l'algo trouve mieux
-            while (valeurMin != valeurPre) 
+            while (valeurMin != valeurPre)
             {
                 valeurPre = valeurMin;
                 for (int i = 1; i < listeDonner.Count; i++)
@@ -130,15 +130,15 @@ namespace VoyageurDeCommerce.modele.algorithmes.realisations
                 // je redonne la nouvelle liste pour continuer les modifications
                 listeDonner = tourneeOptimal;
             }
-            
+
             // Je met ma optimal trouver par mon algo dans tournee
             foreach (Lieu lieu in tourneeOptimal)
             {
                 this.Tournee.Add(lieu);
                 this.NotifyPropertyChanged("Tournee");
             }
-            
-           
+
+
         }
     }
 }
